@@ -16,7 +16,12 @@ class ContUser {
 
       static postRegister(req, res) {
         const { username, email, password, name, phone, nik } = req.body;
-        User.create({ username, email, password, name, phone, nik })
+        // console.log(req.session.user, '<<<<<<<<')
+        User.create({username, email, password})
+          .then(result => {
+            console.log(result)
+            return Profile.create({UserId: result.id, name, phone, nik})
+          })
           .then((newUser) => {
             res.redirect('/');
           })
@@ -65,18 +70,21 @@ class ContUser {
     static readUser(req, res) {
         // res.send('tes tes userlist')
         User.findAll({
-            // include: {
-            //     model: User
-            // }
+            include: {
+                model: Profile
+            }
         })
         .then(result => {
             // res.send(result)
+            // console.log(result)
             res.render('userList', {result})
         })
         .catch(err => {
-            res.send(err)
+          // console.log(err, '<<<<<<')  
+          res.send(err)
         }) 
     }
+    
 
     static productList (request, response) {
       // response.send('uji coba ruting yg dikirim dari controler')

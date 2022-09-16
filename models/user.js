@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
   User.beforeCreate((user) => {
-    user.role = 'Admin'
+    user.role = 'User'
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(user.password,salt);
     user.password = hash

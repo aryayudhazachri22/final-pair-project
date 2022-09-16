@@ -24,5 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Profile',
   });
+  // Profile.beforeCreate((profile) => {
+  //   profile.UserId++
+  // })
   return Profile;
 };

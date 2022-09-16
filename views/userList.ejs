@@ -17,6 +17,10 @@
         <th>User Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Profile Name</th>
+        <th>Phone Number</th>
+        <th>NIK</th>
+        
       </tr>
       <% result.forEach((el, i) => {%>
       <tr>
@@ -24,6 +28,15 @@
         <td><%=el.username%></td>
         <td><%=el.email%></td>
         <td><%=el.role%></td>
+        <% if (el.Profile) { %>
+          <td><%=el.Profile.name%></td>
+          <td><%=el.Profile.phone%></td>
+          <td><%=el.Profile.nik%></td>
+        <% } else { %>
+          <td></td>
+          <td></td>
+          <td></td>
+        <%} %> 
       </tr>
       <%}) %>
     </table>

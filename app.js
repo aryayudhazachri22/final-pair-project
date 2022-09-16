@@ -7,6 +7,7 @@ const session = require('express-session')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:false}));
+app.use(express.static('images'))
 app.use(express.json())
 app.use(session({
   secret: 'keyboard cat',

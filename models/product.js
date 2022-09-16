@@ -42,6 +42,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    imgSrc: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Product image is required'
+        },
+        notEmpty: {
+          msg: 'Product photo is required'
+        }
+      }
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,

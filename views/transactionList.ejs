@@ -10,35 +10,24 @@
   <body>
     <a href="/">Return to Homepage</a><br><br>
     <div class="container">
-      <h1>ShoPai Product List</h1>
-      <% if(role === "Admin"){ %>
-        <a href="/user/user-list"><button class="btn btn-primary">User List</button></a>
-        <a href="/product/add"><button class="btn btn-success">Add New Product</button></a><br /><br />
-      <% } %> 
-
-      <form action="/user/product" method="get">
-        <input type="text" name="search" class="form-control" style="width: 300px;"/><br>
-        <button type="submit" class="btn btn-info">Search</button>
-        <!-- <input type="submit" value="search"/> -->
-      </form>
-      <br /><br />
+      <h1>ShoPai Transaction List</h1>
+      
       <table class="table table-bordered">
         <tr>
           <th>No.</th>
+          <th>User Name</th>
           <th>Product Name</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Action</th>
+          <th>Transaction Date</th>
         </tr>
         <% result.forEach((el, i) => {%>
         <tr>
           <td><%=i + 1%></td>
-          <td><%=el.name%></td>
-          <td><%=convertToRupiah(el.price)%></td>
-          <td><%=el.stock%></td>
-          <td><a href="/user/product/<%=el.id%>/detail">Product Detail</a></td>
+          <td><%=el.Profiles.name%></td>
+          <td><%=el.Product.name%></td>
+          <td><%=el.createdAt%></td>
+          
         </tr>
-        
+
         <%}) %>
       </table>
     </div>
